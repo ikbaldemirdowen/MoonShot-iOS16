@@ -9,15 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        GeometryReader
+        ScrollView(.horizontal)
         {
-            geo in
-            Image("Example")
-                .resizable()
-                .scaledToFill()
-                .frame(width: geo.size.width)
-                .frame(height: geo.size.height)
-            
+            LazyHStack(spacing: 5)
+            {
+                ForEach(0..<1000)
+                {
+                    Text("Row\($0)")
+                        .font(.title)
+                }
+                .frame(maxWidth: .infinity)
+            }
         }
     }
 }
