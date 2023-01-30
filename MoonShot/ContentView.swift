@@ -19,7 +19,7 @@ struct ContentView: View {
                 }
                 label:
                 {
-                    Text("Row \(row)")
+                    Text("Row \(row).")
                 }
             }
             .navigationTitle("SwiftUI")
