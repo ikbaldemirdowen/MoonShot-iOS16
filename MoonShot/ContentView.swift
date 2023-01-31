@@ -26,7 +26,7 @@ struct ContentView: View {
                         mission in
                         NavigationLink
                         {
-                            MissionView(mission: mission)
+                            MissionView(mission: mission, astronauts: astronauts)
                         } label: {
                             VStack
                             {
