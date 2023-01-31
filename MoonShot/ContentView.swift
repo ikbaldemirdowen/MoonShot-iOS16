@@ -8,21 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
+    //we added this decode method below to Bundle as an extension
+    let astronauts : [String : Astronaut] = Bundle.main.decode(file: "astronauts.json")
+    let missions : [Mission] = Bundle.main.decode(file: "missions.json")
+    
+    let columns = [GridItem(.adaptive(minimum: 150))]
+    
     var body: some View {
         NavigationStack
         {
-            List(0..<100)
-            { row in
-                NavigationLink
+            ScrollView(.vertical)
+            {
+                LazyVGrid(columns: columns)
                 {
-                    Text("Detail \(row)")
-                }
-                label:
-                {
-                    Text("Row \(row).")
+                    ForEach(missions)
+                    {
+                        mission in
+                        NavigationLink
+                        {
+                            Text("\(mission.description)")
+                        } label: {
+                            VStack
+                            {
+                                Image(mission.image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 150, height: 150)
+                                VStack
+                                {
+                                    Text(mission.displayName)
+                                        .font(.headline)
+                                    Text(mission.launchDate ?? "No launch date.")
+                                }
+                                .frame(maxWidth: .infinity)
+                            }
+                        }
+                    }
                 }
             }
-            .navigationTitle("SwiftUI")
+            .navigationTitle("MoonShot")
         }
     }
 }
