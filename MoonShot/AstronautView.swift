@@ -16,6 +16,9 @@ struct AstronautView: View {
                 .resizable()
                 .scaledToFit()
             
+            Text(astronaut.name)
+                .foregroundColor(.white).bold().font(.headline)
+            
             Text(astronaut.description)
                 .foregroundColor(.white)
                 .padding()
