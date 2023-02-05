@@ -17,7 +17,7 @@ struct AstronautView: View {
                 .scaledToFit()
             
             Text(astronaut.name)
-                .foregroundColor(.white).bold().font(.headline)
+                .foregroundColor(.white).bold().font(.caption)
             
             Text(astronaut.description)
                 .foregroundColor(.white)
